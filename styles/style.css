@@ -176,6 +176,7 @@ body {
 
     .apresentacao__imagem {
         width: 50%;
+        height: auto;
     }
 
     .apresentacao__links {
