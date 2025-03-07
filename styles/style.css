@@ -18,6 +18,29 @@ body {
     box-sizing: border-box;
     background-color: var(--cor-primaria);
     color: var(--cor-terciaria);
+    min-height: 100vh;
+    background-image: url(../assets/glow\ meteor\ shower\ GIF\ by\ Erica\ Anderson.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+body::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    z-index: 0; 
+    pointer-events: none;
+}
+
+.cabecalho, .apresentacao, .rodape {
+    position: relative;
+    z-index: 1;
 }
 
 .cabecalho {
@@ -108,31 +131,6 @@ body {
     width: 30%;
 }
 
-.apresentacao::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://img1.picmix.com/output/stamp/normal/4/7/2/7/1957274_1e2b2.gif') no-repeat center center/cover;
-    opacity: 0.2; /* Ajuste a opacidade desejada */
-    z-index: -1; /* Mantém a imagem no fundo */
-}
-
-.rodape {
-    color: var(--cor-primaria);
-    background-color: var(--cor-secundaria);
-    padding: 1% 0;
-    width: 100%;
-    text-align: center;
-    font-family: var(--fonte-secundaria);
-    font-size: 1.1rem;
-    font-weight: 400;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-}
 
 @media (max-width: 1200px) {
     .cabecalho {
@@ -191,12 +189,4 @@ body {
         font-size: 1.3rem;
         padding: 10px;
     }
-    .rodape { 
-        display: flex;
-        position: relative;
-        font-size: 0.8rem;
-        text-align: center;
-        justify-content: center;
-    }
-
 }
