@@ -131,6 +131,31 @@ body::before {
     width: 30%;
 }
 
+/* Estilos para a seção de Experiência */
+.experiencia {
+    margin-bottom: 30px; /* Adiciona um espaço abaixo de cada bloco de experiência */
+}
+
+.experiencia__cargo {
+    font-family: var(--fonte-primaria);
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.experiencia__empresa {
+    font-family: var(--fonte-secundaria);
+    font-size: 1.3rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 15px;
+}
+
+.experiencia__descricao {
+    font-family: var(--fonte-secundaria);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    padding-left: 20px;
+}
+
 
 @media (max-width: 1200px) {
     .cabecalho {
@@ -189,4 +214,6 @@ body::before {
         font-size: 1.3rem;
         padding: 10px;
     }
+
+    
 }
