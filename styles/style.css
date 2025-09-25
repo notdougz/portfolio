@@ -129,6 +129,16 @@ body::before {
 
 .apresentacao__imagem {
     width: 30%;
+    border-radius: 40px;
+}
+
+/* === Estilos para a Página Sobre Mim === */
+.sobre-mim__subtitulo {
+    font-family: var(--fonte-primaria); 
+    font-size: 1.5rem;
+    color: var(--cor-secundaria); 
+    margin-top: 25px; 
+    margin-bottom: 10px; 
 }
 
 /* Estilos para a seção de Experiência */
