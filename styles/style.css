@@ -44,7 +44,38 @@ body::before {
 }
 
 .cabecalho {
-    padding: 2% 0% 0% 15%;
+    padding: 2% 10%;
+    padding-bottom: 24px;
+    
+    /* REMOVA ou comente a linha da borda antiga */
+    /* border-bottom: 2px solid var(--cor-secundaria); */
+
+    /* ADICIONE a nova linha de sombra/brilho */
+    box-shadow: 0px 5px 15px -5px rgba(85, 196, 233, 0.4);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cabecalho__download_btn {
+    display: flex; 
+    align-items: center;
+    gap: 8px;
+
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: var(--fonte-secundaria);
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.cabecalho__download_btn:hover {
+    background-color: #89d7f3; 
 }
 
 .cabecalho__menu {
@@ -58,6 +89,14 @@ body::before {
     font-size: 1.5rem;
     color: var(--cor-secundaria);
     text-decoration: none;
+    transition: all 0.3s ease; /* Adicione esta linha para suavizar o efeito */
+}
+
+.cabecalho__menu__link:hover {
+    color: var(--cor-terciaria); /* Mantém a cor do texto mais clara */
+    background-color: var(--cor-hover); /* Usa a mesma cor de fundo dos outros botões */
+    padding: 10px 15px; /* Adiciona um preenchimento para criar um "fundo" */
+    border-radius: 8px; /* Arredonda os cantos */
 }
 
 .apresentacao {
@@ -125,6 +164,7 @@ body::before {
     color: var(--cor-primaria) #000000;
     border: 2px solid var(--cor-secundaria);
     padding: 21.5px 3%;
+    transition: all 0.3s ease;
 }
 
 .apresentacao__imagem {
