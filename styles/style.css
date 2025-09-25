@@ -156,6 +156,78 @@ body::before {
     padding-left: 20px;
 }
 
+.certificados-carousel {
+    width: 90%; /* Define a largura do carrossel */
+    margin: 0 auto; /* Centraliza o carrossel */
+}
+
+.certificado {
+    background-color: #191919;
+    border: 1px solid var(--cor-secundaria);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    height: 180px; /* Altura fixa para manter todos iguais */
+    display: flex !important; /* !important para sobrescrever o estilo do slick */
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.certificado__titulo {
+    font-family: var(--fonte-secundaria);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cor-terciaria);
+}
+
+.certificado__escola {
+    font-family: var(--fonte-secundaria);
+    font-size: 1rem;
+    color: #b2b2b2;
+}
+
+.certificado__link {
+    font-family: var(--fonte-secundaria);
+    text-decoration: none;
+    color: var(--cor-secundaria);
+    font-weight: 600;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.certificado__link:hover {
+    border-color: var(--cor-secundaria);
+    background-color: rgba(85, 196, 233, 0.1);
+}
+
+/* Customização das setas e pontos do Slick */
+.slick-prev:before, .slick-next:before {
+    color: var(--cor-secundaria);
+}
+
+.slick-dots li button:before {
+    color: var(--cor-terciaria);
+}
+
+.slick-dots li.slick-active button:before {
+    color: var(--cor-secundaria);
+}
+
+#page-curriculo .apresentacao {
+    display: block;
+}
+
+/* E que, DENTRO deste .apresentacao, o conteúdo
+   deve ocupar 100% da largura */
+#page-curriculo .apresentacao__conteudo {
+    width: 100%;
+}
+
+
 
 @media (max-width: 1200px) {
     .cabecalho {
