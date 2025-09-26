@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Projetos</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+</head>
+<body>
+    <header class="cabecalho">
+        <nav class="cabecalho__menu">
+            <a class="cabecalho__menu__link" href="index.html">Home</a>
+            <a class="cabecalho__menu__link" href="about.html">Sobre mim</a>
+            <a class="cabecalho__menu__link" href="curriculo.html">Currículo</a>
+            <a class="cabecalho__menu__link" href="projetos.html">Projetos</a>
+        </nav>
+        <a class="cabecalho__download_btn" href="./assets/Douglas_Oliveira_CV.pdf" download>
+            <img src="./assets/download.png" alt="Ícone de download">
+            Download CV
+        </a>
+    </header>
+
+    <main class="apresentacao projetos-main">
+        <section class="projetos">
+            <h1 class="apresentacao__conteudo__titulo">Meus Projetos</h1>
+            <div class="projetos__container">
+                <div class="projeto-card">
+                    <img class="projeto-card__imagem" src="./assets/numero-secreto.png" alt="Imagem do Jogo do Número Secreto">
+                    <h3 class="projeto-card__titulo">Jogo do Número Secreto</h3>
+                    <p class="projeto-card__descricao">Projeto onde o utilizador tenta adivinhar o número escolhido aleatoriamente pelo site. Interação simples, com foco em diversão e desafio.</p>
+                    <div class="projeto-card__tecnologias">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="projeto-card__links">
+                        <a href="https://github.com/notdougz/jogo-do-numero-secreto" class="projeto-card__link secundario" target="_blank">Ver Código</a>
+                        <a href="https://jogo-roan-alpha.vercel.app/" class="projeto-card__link" target="_blank">Ver Online</a>
+                    </div>
+                </div>
+
+                <div class="projeto-card">
+                    <img class="projeto-card__imagem" src="./assets/quiz-amor.png" alt="Imagem do projeto Quiz do Amor">
+                    <h3 class="projeto-card__titulo">Quiz do Amor</h3>
+                    <p class="projeto-card__descricao">Projeto pessoal criado como presente. Aplicação web interativa com perguntas sobre relacionamentos, oferecendo feedback personalizado e design responsivo.</p>
+                    <div class="projeto-card__tecnologias">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+
+                    <div class="projeto-card__links">
+                        <a href="https://github.com/notdougz/quiz-do-amor" class="projeto-card__link secundario" target="_blank">Ver Código</a>
+                        <a href="https://quiz-do-amor.vercel.app/" class="projeto-card__link" target="_blank">Ver Online</a>
+                    </div>
+                </div>
+
+                <div class="projeto-card">
+                    <img class="projeto-card__imagem" src="./assets/amigo-secreto.png" alt="Imagem do Jogo de Amigo Secreto">
+                    <h3 class="projeto-card__titulo">Jogo de Amigo Secreto</h3>
+                    <p class="projeto-card__descricao">Aplicação web interativa para sorteio de Amigo Secreto. Permite adicionar nomes, realizar sorteios aleatórios e reiniciar o jogo.</p>
+                    <div class="projeto-card__tecnologias">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="projeto-card__links">
+                        <a href="https://github.com/notdougz/amigo-secreto" class="projeto-card__link secundario" target="_blank">Ver Código</a>
+                        <a href="https://amigo-secreto-nine-wine.vercel.app/" class="projeto-card__link" target="_blank">Ver Online</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape"></footer>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.projetos__container').slick({
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 3000,
+                responsive: [
+                    {
+                        breakpoint: 1200,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+</body>
+</html>

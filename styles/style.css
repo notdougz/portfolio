@@ -46,13 +46,7 @@ body::before {
 .cabecalho {
     padding: 2% 10%;
     padding-bottom: 24px;
-    
-    /* REMOVA ou comente a linha da borda antiga */
-    /* border-bottom: 2px solid var(--cor-secundaria); */
-
-    /* ADICIONE a nova linha de sombra/brilho */
     box-shadow: 0px 5px 15px -5px rgba(85, 196, 233, 0.4);
-
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -89,14 +83,14 @@ body::before {
     font-size: 1.5rem;
     color: var(--cor-secundaria);
     text-decoration: none;
-    transition: all 0.3s ease; /* Adicione esta linha para suavizar o efeito */
+    transition: all 0.3s ease; 
 }
 
 .cabecalho__menu__link:hover {
-    color: var(--cor-terciaria); /* Mantém a cor do texto mais clara */
-    background-color: var(--cor-hover); /* Usa a mesma cor de fundo dos outros botões */
-    padding: 10px 15px; /* Adiciona um preenchimento para criar um "fundo" */
-    border-radius: 8px; /* Arredonda os cantos */
+    color: var(--cor-terciaria); 
+    background-color: var(--cor-hover); 
+    padding: 10px 15px; 
+    border-radius: 8px; 
 }
 
 .apresentacao {
@@ -183,7 +177,7 @@ body::before {
 
 /* Estilos para a seção de Experiência */
 .experiencia {
-    margin-bottom: 30px; /* Adiciona um espaço abaixo de cada bloco de experiência */
+    margin-bottom: 30px; 
 }
 
 .experiencia__cargo {
@@ -207,8 +201,8 @@ body::before {
 }
 
 .certificados-carousel {
-    width: 90%; /* Define a largura do carrossel */
-    margin: 0 auto; /* Centraliza o carrossel */
+    width: 90%; 
+    margin: 0 auto; 
 }
 
 .certificado {
@@ -218,8 +212,8 @@ body::before {
     padding: 20px;
     margin: 10px;
     text-align: center;
-    height: 180px; /* Altura fixa para manter todos iguais */
-    display: flex !important; /* !important para sobrescrever o estilo do slick */
+    height: 180px; 
+    display: flex !important; 
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -254,7 +248,6 @@ body::before {
     background-color: rgba(85, 196, 233, 0.1);
 }
 
-/* Customização das setas e pontos do Slick */
 .slick-prev:before, .slick-next:before {
     color: var(--cor-secundaria);
 }
@@ -271,13 +264,127 @@ body::before {
     display: block;
 }
 
-/* E que, DENTRO deste .apresentacao, o conteúdo
-   deve ocupar 100% da largura */
 #page-curriculo .apresentacao__conteudo {
     width: 100%;
 }
 
+/* === Estilos para a Página Projetos === */
+.projetos-main {
+    display: block;
+    padding: 0;
+}
 
+.projetos {
+    padding: 5% 10%;
+}
+
+.projetos .apresentacao__conteudo__titulo {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.projetos__container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.projetos__container .slick-slide {
+    padding: 0 15px;
+}
+
+.projeto-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+    transition: background 0.3s ease, border 0.3s ease;
+    margin: 0 15px;
+}
+
+.projetos__container .slick-slide {
+    padding: 20px 20px;
+}
+
+.projeto-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.projeto-card__imagem {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 20px; 
+}
+
+.projeto-card__titulo {
+    font-family: var(--fonte-primaria);
+    font-size: 1.2rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 10px;
+}
+
+.projeto-card__descricao {
+    font-family: var(--fonte-secundaria);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.projeto-card__tecnologias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.projeto-card__tecnologias span {
+    font-family: var(--fonte-secundaria);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--cor-terciaria);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.projeto-card__links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px; 
+}
+
+.projeto-card__link {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-primaria);
+    padding: 12px 0;
+    width: 50%;
+    text-align: center;
+    border-radius: 8px;
+    font-family: var(--fonte-secundaria);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.projeto-card__link:hover {
+    background-color: #89d7f3;
+}
+
+.projeto-card__link.secundario {
+    background-color: transparent;
+    border: 1px solid var(--cor-secundaria);
+    color: var(--cor-secundaria);
+}
+
+.projeto-card__link.secundario:hover {
+    background-color: rgba(85, 196, 233, 0.1);
+}
 
 @media (max-width: 1200px) {
     .cabecalho {
