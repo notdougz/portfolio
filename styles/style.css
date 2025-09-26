@@ -387,62 +387,70 @@ body::before {
 }
 
 @media (max-width: 1200px) {
-    .cabecalho {
-        padding: 4% 0% 2% 0%;
-        display: flex;
-        justify-content: center;
-        white-space: nowrap;
-    }
-
-    .cabecalho__menu {
-        gap: 40px;
-    }
-
-    .cabecalho__menu__link {
-        font-size: 0.85rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-    }
-
     .apresentacao {
-        flex-direction: column-reverse;
-        padding: 40px;
-        gap: 40px;
+        flex-direction: column-reverse; 
+        padding: 10% 5%; 
     }
 
     .apresentacao__conteudo {
         width: auto;
+    }
+
+    .cabecalho {
+        padding: 10% 5% 5% 5%;
+        flex-direction: column; 
+        gap: 20px;
+    }
+
+    .cabecalho__menu {
         gap: 40px;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .cabecalho__menu__link, .cabecalho__download_btn {
+        font-size: 1rem; 
     }
 
     .apresentacao__conteudo__titulo {
-        font-size: 1.5rem;
+        font-size: 1.5rem; 
     }
 
     .apresentacao__conteudo__texto {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
-
+    
+    .sobre-mim__subtitulo {
+        font-size: 1.3rem;
+    }
+    
+    .experiencia__cargo, .experiencia__empresa, .experiencia__descricao {
+        font-size: 1rem;
+    }
+    
     .apresentacao__imagem {
-        max-width: 50%;
-        width: 100%;
-    }
-
-    .apresentacao__links {
-        gap: 25px;
+        width: 70%;
     }
 
     .apresentacao__links__subtitulo {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 
     .apresentacao__links__navegacao {
-        font-size: 1.3rem;
-        padding: 10px;
+        width: 80%; 
+        padding: 15px 0;
+        font-size: 1.2rem;
+    }
+    
+    .projetos {
+        padding: 10% 5%;
     }
 
+    .projeto-card__titulo {
+        font-size: 1.1rem;
+    }
     
+    .projeto-card__descricao {
+        font-size: 0.9rem;
+    }
 }
