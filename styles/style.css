@@ -162,8 +162,10 @@ body::before {
 }
 
 .apresentacao__imagem {
-    width: 30%;
-    border-radius: 40px;
+    width: 40%;
+    border-radius: 40px; 
+    box-shadow: 0 0 25px rgba(85, 196, 233, 0.7); 
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 /* === Estilos para a Página Sobre Mim === */
