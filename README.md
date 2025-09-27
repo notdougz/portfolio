@@ -10,7 +10,7 @@ Olá, Bem vindo ao meu projeto de portfólio.
 
 * CSS
 
-* Flex-box
+* Javascript
 
 ## Feito por:
 
