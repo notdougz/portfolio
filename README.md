@@ -4,7 +4,7 @@ Bem-vindo ao meu portfólio pessoal! Este projeto apresenta minha jornada como d
 
 ## 📸 Prévia do Projeto
 
-![Prévia do Portfólio](./assets/preview.png)
+# ![Prévia do Portfólio](./assets/preview.png)
 
 ## 🚀 Sobre o Projeto
 
