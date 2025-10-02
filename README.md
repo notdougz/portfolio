@@ -4,7 +4,8 @@ Bem-vindo ao meu portfólio pessoal! Este projeto apresenta minha jornada como d
 
 ## 📸 Prévia do Projeto
 
-![Prévia do Portfólio](https://imgur.com/a/RkwMFiS)
+![Prévia do Portfólio](<img width="1919" height="1080" alt="image" src="https://github.com/user-attachments/assets/cd1875ac-8aa8-4435-97e2-df990a1fd4c9" />
+)
 
 ## 🚀 Sobre o Projeto
 
