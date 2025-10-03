@@ -74,6 +74,8 @@ Portfolio/
 
 O projeto está hospedado e pode ser acessado através do GitHub Pages ou Vercel. Todos os projetos mencionados no portfólio também possuem links diretos para suas respectivas demonstrações online.
 
+- Portfólio online: [https://portfolio-sage-sigma-63.vercel.app/](https://portfolio-sage-sigma-63.vercel.app/)
+
 ## 📈 Projetos em Destaque
 
 - **Jogo do Número Secreto**: Jogo interativo desenvolvido em JavaScript
