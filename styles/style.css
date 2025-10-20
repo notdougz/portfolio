@@ -345,10 +345,6 @@ body::before {
     opacity: 1;
 }
 
-.projeto-card__imagem:first-child {
-    opacity: 1;
-}
-
 /* === Controles de Navegação da Galeria === */
 .galeria-prev,
 .galeria-next {

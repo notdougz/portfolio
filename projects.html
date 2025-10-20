@@ -167,7 +167,11 @@
                 });
 
                 function showImage(index) {
-                    $imagens.removeClass('active').eq(index).addClass('active');
+                    // Primeiro, esconder todas as imagens
+                    $imagens.css('opacity', '0').removeClass('active');
+                    // Depois, mostrar apenas a imagem selecionada
+                    $imagens.eq(index).css('opacity', '1').addClass('active');
+                    // Atualizar os pontos de navegação
                     $dots.find('.galeria-dot').removeClass('active').eq(index).addClass('active');
                 }
 
@@ -187,7 +191,8 @@
                     showImage(currentIndex);
                 });
 
-                // Mostrar primeira imagem
+                // Inicializar: esconder todas e mostrar apenas a primeira
+                $imagens.css('opacity', '0');
                 showImage(0);
             });
         });
