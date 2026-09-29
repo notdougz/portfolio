@@ -102,22 +102,47 @@ function initializeMotion() {
       drawTimeline();
     }
 
-    // Reading never depends on continuing to scroll: every entrance finishes itself.
+    // Entrances finish on their own and replay when the reader scrolls back up.
+    const replay = "play none none reverse";
     for (const row of document.querySelectorAll(".timeline > .experience")) {
-      gsap.from(
-        row.querySelectorAll(
-          ".experience-company, .experience-date, .experience-description",
-        ),
-        {
-          y: 18,
-          opacity: 0,
-          stagger: 0.1,
-          duration: 0.7,
-          ease: "power2.out",
-          scrollTrigger: { trigger: row, start: "top 88%", once: true },
-          clearProps: "all",
-        },
-      );
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: row,
+            start: "top 86%",
+            toggleActions: replay,
+          },
+        })
+        .from(row.querySelector(".experience-company"), {
+          x: -70,
+          autoAlpha: 0,
+          duration: 0.85,
+          ease: "power3.out",
+        })
+        .from(
+          row.querySelector(".experience-date"),
+          {
+            y: 50,
+            scale: 0.8,
+            autoAlpha: 0,
+            duration: 0.85,
+            ease: "back.out(1.7)",
+          },
+          "<0.08",
+        )
+        .from(
+          row.querySelectorAll(
+            ".experience-description > p, .experience-points li",
+          ),
+          {
+            x: 70,
+            autoAlpha: 0,
+            duration: 0.75,
+            stagger: 0.08,
+            ease: "power3.out",
+          },
+          "<0.08",
+        );
     }
     for (const title of document.querySelectorAll(
       ".experience-section h2, .projects-section h2, .tech-section h2, .ai-section h2, .education-section h2",
@@ -133,7 +158,11 @@ function initializeMotion() {
             duration: 1.05,
             stagger: 0.12,
             ease: "expo.out",
-            scrollTrigger: { trigger: title, start: "top 88%", once: true },
+            scrollTrigger: {
+              trigger: title,
+              start: "top 88%",
+              toggleActions: replay,
+            },
           }),
       });
     }
@@ -177,29 +206,54 @@ function initializeMotion() {
         duration: 0.7,
         stagger: 0.06,
         ease: "back.out(1.8)",
-        scrollTrigger: { trigger: grid, start: "top 90%", once: true },
-        clearProps: "all",
+        scrollTrigger: {
+          trigger: grid,
+          start: "top 90%",
+          toggleActions: replay,
+        },
       });
     }
 
-    for (const selector of [
-      ".about-copy",
-      ".ai-capabilities",
-      ".ai-case",
-      ".ai-workflow",
-      ".education-cards",
-    ]) {
-      const group = document.querySelector(selector);
-      if (!group) continue;
-      gsap.from(group, {
-        y: 18,
-        opacity: 0,
-        duration: 0.68,
-        ease: "power2.out",
-        scrollTrigger: { trigger: group, start: "top 89%", once: true },
-        clearProps: "all",
-      });
-    }
+    // Magnetic controls (x/y driven by the pointer) are revealed through their parents.
+    const blocks = gsap.utils.toArray(
+      [
+        ".about-copy > :not(h2)",
+        ".section-heading > .section-kicker",
+        ".ai-heading > :not(h2):not(.text-link)",
+        ".ai-capabilities > *",
+        ".ai-case > *",
+        ".ai-workflow > *",
+        ".ai-knowledge li",
+        ".tech-group > h3",
+        ".education-heading > :not(h2)",
+        ".education-cards > article",
+        ".previous-experience > summary",
+        ".contact-intro",
+        ".contact-bottom > *",
+      ].join(","),
+    );
+    gsap.set(blocks, { autoAlpha: 0, y: 64 });
+    ScrollTrigger.batch(blocks, {
+      start: "top 92%",
+      onEnter: (batch) =>
+        gsap.to(batch, {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.95,
+          stagger: 0.1,
+          ease: "back.out(1.5)",
+          overwrite: true,
+        }),
+      onLeaveBack: (batch) =>
+        gsap.to(batch, {
+          autoAlpha: 0,
+          y: 64,
+          duration: 0.4,
+          stagger: 0.04,
+          ease: "power2.in",
+          overwrite: true,
+        }),
+    });
     gsap.from(".project-card", {
       y: 48,
       opacity: 0,
