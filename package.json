@@ -1,0 +1,26 @@
+{
+  "name": "douglas-oliveira-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "check": "node --check scripts/main.js && node --check scripts/animations.js && node --check scripts/projects.js && node --check scripts/i18n.js && node --check scripts/gallery.js && node --check scripts/scroll.js",
+    "format": "prettier --write index.html en.html styles/*.css scripts/*.js vite.config.js package.json"
+  },
+  "dependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/caveat": "^5.3.0",
+    "@fontsource-variable/instrument-sans": "^5.3.0",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "photoswipe": "^5.4.4"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.9",
+    "vite": "^8.3.1"
+  }
+}

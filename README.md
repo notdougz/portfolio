@@ -1,108 +1,52 @@
-# 🌟 Portfólio Pessoal - Douglas Oliveira
+# Portfólio · Douglas Oliveira
 
-Bem-vindo ao meu portfólio pessoal! Este projeto apresenta minha jornada como desenvolvedor FullStack, destacando minhas habilidades, projetos e experiências profissionais.
+Meu espaço para mostrar o que construo, por onde passei e o que me move dentro e fora da tecnologia. Sou desenvolvedor full-stack com foco em back-end e IA aplicada a produtos. A versão atual do site está em **[techdoug.me](https://www.techdoug.me/)**, também disponível [em inglês](https://www.techdoug.me/en.html).
 
-## 📸 Prévia do Projeto
+O portfólio reúne minha trajetória na Humana AI, Appen Seguros e em projetos independentes; apresenta trabalhos como o sistema de agendamentos para barbearia e a First API; e conta um pouco da minha relação com o Ultimate Frisbee. O avatar ilustrado, a timeline e a navegação por projetos foram desenhados para dar personalidade à página sem atrapalhar a leitura.
 
-# ![Prévia do Portfólio](./assets/preview.png)
+## Rodando localmente
 
-## 🚀 Sobre o Projeto
+Requer Node.js 22.12+ ou 24 LTS.
 
-Este portfólio foi desenvolvido como uma vitrine digital das minhas competências técnicas e projetos realizados. O site apresenta uma interface moderna e responsiva, com animações suaves e um design profissional que reflete minha paixão por desenvolvimento web.
-
-### ✨ Funcionalidades
-
-- **Design Responsivo**: Adaptável a diferentes tamanhos de tela
-- **Navegação Intuitiva**: Menu de navegação fluido entre as seções
-- **Carrossel Interativo**: Exibição dinâmica de projetos e certificados
-- **Animações CSS**: Efeitos visuais modernos e profissionais
-- **Download de CV**: Acesso direto ao currículo em PDF
-- **Links para Redes Sociais**: Conexão direta com perfis profissionais
-
-### 📱 Seções do Site
-
-1. **Home**: Apresentação pessoal e links para redes sociais
-2. **Sobre Mim**: História pessoal e trajetória na tecnologia
-3. **Currículo**: Tecnologias, certificações e experiências profissionais
-4. **Projetos**: Showcase dos principais projetos desenvolvidos
-
-## 🛠️ Tecnologias Utilizadas
-
-### Frontend
-
-- **HTML5**: Estruturação semântica do conteúdo
-- **CSS3**: Estilização avançada com Flexbox e animações
-- **JavaScript**: Interatividade e funcionalidades dinâmicas
-
-### Bibliotecas e Frameworks
-
-- **Slick Carousel**: Carrossel responsivo para projetos e certificados
-- **jQuery**: Manipulação DOM e eventos
-- **Google Fonts**: Tipografia personalizada (Krona One, Montserrat)
-
-### Ferramentas de Desenvolvimento
-
-- **Git & GitHub**: Controle de versão e hospedagem do código
-- **Vercel**: Deploy e hospedagem dos projetos
-
-## 🎨 Design e UX
-
-- **Paleta de Cores**: Esquema moderno com azul (#55C4E9) como cor principal
-- **Tipografia**: Combinação harmoniosa entre Krona One e Montserrat
-- **Layout**: Design limpo e profissional com foco na experiência do usuário
-- **Animações**: Transições suaves e efeitos hover para melhor interatividade
-
-## 📂 Estrutura do Projeto
-
-```
-Portfolio/
-├── index.html          # Página principal
-├── about.html          # Página sobre mim
-├── curriculo.html      # Página de currículo
-├── projects.html       # Página de projetos
-├── styles/
-│   └── style.css       # Estilos principais
-├── assets/
-│   ├── *.png           # Imagens e ícones
-│   ├── *.jpg           # Fotografias
-│   ├── *.gif           # Animações
-│   └── *.pdf           # Currículo em PDF
-└── README.md           # Documentação do projeto
+```sh
+npm ci
+npm run dev
 ```
 
-## 🌐 Deploy
+Para conferir a versão de produção:
 
-O projeto está hospedado e pode ser acessado através do GitHub Pages ou Vercel. Todos os projetos mencionados no portfólio também possuem links diretos para suas respectivas demonstrações online.
+```sh
+npm run check
+npm run build
+npm run preview
+```
 
-- Portfólio online: [https://portfolio-sage-sigma-63.vercel.app/](https://portfolio-sage-sigma-63.vercel.app/)
+O build fica em `dist/`. O projeto usa Vite e pode ser publicado como site estático; `vercel.json` define o build na Vercel.
 
-## 📈 Projetos em Destaque
+## Como foi feito
 
-- **Jogo do Número Secreto**: Jogo interativo desenvolvido em JavaScript
-- **Quiz do Amor**: Aplicação personalizada com sistema de pontuação
-- **Amigo Secreto**: Sistema de sorteio com interface intuitiva
+- **Base:** HTML semântico, CSS responsivo e JavaScript em módulos. Há páginas completas em português (`index.html`) e inglês (`en.html`), além de currículos nos dois idiomas.
+- **Movimento:** GSAP e ScrollTrigger ligam o progresso da timeline à rolagem e iluminam cada marco ao alcançá-lo. Lenis suaviza a rolagem no desktop com mouse. O movimento respeita a preferência por animações reduzidas.
+- **Projetos:** em telas grandes, a galeria horizontal acompanha a rolagem; em telas menores, usa rolagem nativa, botões e teclado.
+- **Imagens:** PhotoSwipe abre as galerias de telas com zoom, gestos, legendas e navegação por teclado. O diálogo nativo serve como alternativa.
+- **Interface:** tema claro/escuro persistente, navegação por âncoras, estados de foco visíveis e confirmação acessível ao copiar o e-mail.
 
-## 🎯 Objetivos do Projeto
+## Onde está cada parte
 
-Este portfólio foi desenvolvido com os seguintes objetivos:
+| Caminho | Conteúdo |
+| :-- | :-- |
+| `index.html`, `en.html` | Conteúdo, estrutura e links dos dois idiomas |
+| `styles/style.css` | Identidade visual e layouts responsivos |
+| `scripts/main.js` | Tema, menu e interações gerais |
+| `scripts/animations.js` | Timeline, entradas e sincronização da rolagem |
+| `scripts/projects.js`, `scripts/gallery.js` | Navegação dos projetos e galerias |
+| `assets/` | Avatar, imagens dos projetos e currículos |
+| `docs/content-sources.md` | Fontes usadas para revisar experiências e conteúdo |
 
-- Demonstrar competências técnicas em desenvolvimento web
-- Apresentar projetos de forma profissional e organizada
-- Facilitar o contato com recrutadores e potenciais empregadores
-- Servir como referência da evolução profissional
+As URLs antigas `about.html`, `curriculo.html` e `projects.html` continuam direcionando às seções atuais. Ao atualizar experiências, revise também `index.html`, `en.html` e os currículos.
 
-## 📞 Contato
+## Sobre o conteúdo visual
 
-**Douglas Oliveira**  
-Desenvolvedor FullStack
+O avatar é uma ilustração criada a partir de fotos fornecidas por mim. Os screenshots dos projetos são das aplicações reais. A composição visual teve como referência o [portfólio de Gabriel Machado](https://devmachado.com.br/); código, conteúdo e ilustração são próprios. Mais detalhes sobre a procedência do conteúdo estão em [`docs/content-sources.md`](docs/content-sources.md).
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/douglas-oliveira-627088188/)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/notdougz)
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/d.oliveira._/)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/5511962778904)
-
----
-
-⭐ **Se você gostou do projeto, não esqueça de dar uma estrela no repositório!**
-
-_Desenvolvido por Douglas Oliveira_
+Se quiser conversar sobre o projeto ou sobre desenvolvimento full-stack e IA aplicada, pode me encontrar no [LinkedIn](https://www.linkedin.com/in/douglas-oliveira-627088188/) ou por [e-mail](mailto:doug.dev@hotmail.com).
