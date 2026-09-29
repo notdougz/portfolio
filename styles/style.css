@@ -3684,3 +3684,260 @@ dialog.life-drawer.is-closing .life-drawer-panel {
     font-size: 24px;
   }
 }
+
+/* Curtain: first-visit intro and PT/EN switch. */
+:root {
+  --curtain-ease: cubic-bezier(0.77, 0, 0.18, 1);
+}
+.curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  visibility: hidden;
+  pointer-events: none;
+}
+html.curtain-in .curtain,
+html.curtain-out .curtain,
+html.curtain-leave .curtain {
+  visibility: visible;
+}
+html.curtain-in .curtain,
+html.curtain-leave .curtain {
+  pointer-events: auto;
+}
+html.curtain-in {
+  overflow: hidden;
+}
+.curtain-blue,
+.curtain-panel {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 100%);
+}
+.curtain-blue {
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--blue) 55%, #06101c),
+    var(--blue)
+  );
+}
+.curtain-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background:
+    radial-gradient(
+      circle at 50% 62%,
+      color-mix(in srgb, var(--blue) 14%, transparent),
+      transparent 55%
+    ),
+    var(--bg);
+}
+html.curtain-in .curtain-blue,
+html.curtain-in .curtain-panel {
+  clip-path: inset(0);
+}
+html.curtain-leave .curtain-blue {
+  animation: curtain-cover 0.6s var(--curtain-ease) both;
+}
+html.curtain-leave .curtain-panel {
+  animation: curtain-cover 0.6s var(--curtain-ease) 0.1s both;
+}
+html.curtain-out .curtain-panel {
+  animation: curtain-uncover 0.75s var(--curtain-ease) both;
+}
+html.curtain-out .curtain-blue {
+  animation: curtain-uncover 0.75s var(--curtain-ease) 0.12s both;
+}
+.curtain-code,
+.curtain-logo {
+  display: flex;
+  overflow: hidden;
+  margin: 0;
+  padding-bottom: 0.04em;
+  font: 800 clamp(120px, 22vw, 300px) / 0.9 var(--display);
+  letter-spacing: -0.06em;
+  color: var(--text);
+}
+.curtain-code span,
+.curtain-logo span {
+  display: inline-block;
+}
+.curtain-logo .dot {
+  color: var(--blue);
+}
+.curtain-note {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 40px);
+  transform: rotate(-3deg);
+}
+.curtain-bar {
+  width: min(260px, 50vw);
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--line);
+}
+.curtain-bar i {
+  display: block;
+  height: 100%;
+  background: var(--blue);
+  box-shadow: 0 0 12px var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.curtain-status {
+  margin: 0;
+  font: 500 12px var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--subtle);
+}
+.curtain [data-curtain-intro],
+.curtain-logo {
+  display: none;
+}
+html.curtain-intro .curtain [data-curtain-intro] {
+  display: block;
+}
+html.curtain-intro .curtain-logo {
+  display: flex;
+}
+html.curtain-intro .curtain-code,
+html.curtain-intro [data-curtain-lang] {
+  display: none;
+}
+html.curtain-lang .curtain-bar i {
+  transform: scaleX(1);
+}
+html.curtain-leave .curtain-code span {
+  animation: curtain-char 0.8s var(--ease-ui) 0.28s both;
+}
+html.curtain-leave .curtain-code span + span {
+  animation-delay: 0.36s;
+}
+html.curtain-leave .curtain-note {
+  animation: curtain-fade 0.6s var(--ease-ui) 0.4s both;
+}
+html.curtain-leave .curtain-bar i {
+  animation: curtain-bar 0.65s var(--curtain-ease) 0.2s both;
+}
+html.curtain-intro .curtain-logo span {
+  animation: curtain-char 0.9s var(--ease-ui) 0.15s both;
+}
+html.curtain-intro .curtain-logo span:nth-child(2) {
+  animation-delay: 0.23s;
+}
+html.curtain-intro .curtain-logo span:nth-child(3) {
+  animation-delay: 0.31s;
+}
+html.curtain-intro .curtain-note {
+  animation: curtain-fade 0.7s var(--ease-ui) 0.45s both;
+}
+html.curtain-intro .curtain-bar i {
+  animation: curtain-bar 0.95s var(--curtain-ease) 0.2s both;
+}
+html.curtain-intro .curtain-status {
+  animation: curtain-status 0.6s var(--ease-ui) 0.5s both;
+}
+@keyframes curtain-cover {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes curtain-uncover {
+  from {
+    clip-path: inset(0);
+  }
+  to {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+@keyframes curtain-char {
+  from {
+    transform: translateY(105%) rotate(6deg);
+  }
+}
+@keyframes curtain-fade {
+  from {
+    opacity: 0;
+    transform: translateY(12px) rotate(-3deg);
+  }
+}
+@keyframes curtain-status {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes curtain-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Pointer follower (fine pointers only; the native cursor stays). */
+.cursor {
+  display: none;
+}
+html.has-cursor .cursor {
+  display: block;
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 8000;
+  pointer-events: none;
+}
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border: 1px solid color-mix(in srgb, var(--blue) 70%, transparent);
+  border-radius: 50%;
+  opacity: 0;
+  transition:
+    width 0.35s var(--ease-ui),
+    height 0.35s var(--ease-ui),
+    margin 0.35s var(--ease-ui),
+    background-color 0.3s var(--ease-ui),
+    border-color 0.3s var(--ease-ui),
+    opacity 0.3s var(--ease-ui);
+}
+.cursor.is-visible .cursor-ring {
+  opacity: 1;
+}
+.cursor.is-link .cursor-ring {
+  width: 56px;
+  height: 56px;
+  margin: -28px 0 0 -28px;
+  background: color-mix(in srgb, var(--blue) 12%, transparent);
+}
+.cursor.is-view .cursor-ring {
+  width: 88px;
+  height: 88px;
+  margin: -44px 0 0 -44px;
+  border-color: transparent;
+  background: var(--blue);
+}
+.cursor-label {
+  font: 600 12px var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #06101c;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-ui);
+}
+.cursor.is-view .cursor-label {
+  opacity: 1;
+}
