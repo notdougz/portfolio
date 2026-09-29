@@ -7,7 +7,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "check": "node --check scripts/main.js && node --check scripts/animations.js && node --check scripts/projects.js && node --check scripts/i18n.js && node --check scripts/gallery.js && node --check scripts/scroll.js",
+    "check": "node --check scripts/main.js && node --check scripts/animations.js && node --check scripts/projects.js && node --check scripts/i18n.js && node --check scripts/gallery.js && node --check scripts/scroll.js && node --check scripts/life.js && node --check scripts/curtain.js",
     "format": "prettier --write index.html en.html styles/*.css scripts/*.js vite.config.js package.json"
   },
   "dependencies": {

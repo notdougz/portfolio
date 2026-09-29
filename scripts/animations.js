@@ -25,6 +25,16 @@ function initializeMotion() {
   media = gsap.matchMedia();
   media.add("(prefers-reduced-motion: no-preference)", () => {
     const cleanups = [];
+    // While the curtain covers the page, the hero waits and enters as it opens.
+    const covered = document.documentElement.classList.contains("curtain-in");
+    const heroIntro = gsap.timeline({ paused: covered, delay: 0.15 });
+    if (covered) {
+      const play = () => heroIntro.play();
+      document.addEventListener("portfolio:curtain-open", play, { once: true });
+      cleanups.push(() =>
+        document.removeEventListener("portfolio:curtain-open", play),
+      );
+    }
     const heroTitle = document.querySelector("#hero-title");
     if (heroTitle) {
       // The name rises out of a line mask, one character at a time.
@@ -33,31 +43,43 @@ function initializeMotion() {
         mask: "lines",
         linesClass: "split-line",
         onSplit: (self) =>
-          gsap.from(self.chars, {
-            yPercent: 118,
-            rotate: 7,
-            duration: 1.1,
-            stagger: 0.035,
-            ease: "expo.out",
-            delay: 0.15,
-          }),
+          heroIntro.from(
+            self.chars,
+            {
+              yPercent: 118,
+              rotate: 7,
+              duration: 1.1,
+              stagger: 0.035,
+              ease: "expo.out",
+            },
+            covered ? 0.35 : 0,
+          ),
       });
     }
-    gsap.from(".hero-intro > :not(h1), .hero-role > *", {
-      y: 18,
-      opacity: 0,
-      stagger: 0.08,
-      duration: 0.68,
-      ease: "power3.out",
-      clearProps: "all",
-    });
-    gsap.from(".avatar-float", {
-      y: 16,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      clearProps: "all",
-    });
+    heroIntro.from(
+      ".hero-intro > :not(h1), .hero-role > *",
+      {
+        y: 24,
+        opacity: 0,
+        stagger: 0.08,
+        duration: 0.8,
+        ease: "power3.out",
+        clearProps: "all",
+      },
+      covered ? 0.5 : 0,
+    );
+    heroIntro.from(
+      ".avatar-float",
+      {
+        y: covered ? 60 : 16,
+        scale: covered ? 0.94 : 1,
+        opacity: 0,
+        duration: covered ? 1.2 : 0.8,
+        ease: "expo.out",
+        clearProps: "all",
+      },
+      covered ? 0.25 : 0,
+    );
 
     const rail = document.querySelector(".timeline-rail");
     if (rail) {
@@ -443,6 +465,49 @@ function initializeMotion() {
           hx?.(nx * -34);
           hy?.(ny * -22);
         });
+      }
+
+      // A soft ring trails the pointer and says what a click will do.
+      const cursor = document.querySelector(".cursor");
+      const ring = cursor?.querySelector(".cursor-ring");
+      if (cursor && ring) {
+        const english = document.documentElement.lang === "en";
+        const label = cursor.querySelector(".cursor-label");
+        const ringX = gsap.quickTo(ring, "x", {
+          duration: 0.45,
+          ease: "power3",
+        });
+        const ringY = gsap.quickTo(ring, "y", {
+          duration: 0.45,
+          ease: "power3",
+        });
+        document.documentElement.classList.add("has-cursor");
+        on(window, "pointermove", (event) => {
+          if (event.pointerType !== "mouse") return;
+          ringX(event.clientX);
+          ringY(event.clientY);
+          cursor.classList.add("is-visible");
+        });
+        on(document.documentElement, "pointerleave", () =>
+          cursor.classList.remove("is-visible"),
+        );
+        on(document, "pointerover", (event) => {
+          const view = event.target.closest(".project-image, .life-teaser");
+          const link = event.target.closest("a, button, summary, [tabindex]");
+          cursor.classList.toggle("is-view", Boolean(view));
+          cursor.classList.toggle("is-link", Boolean(link) && !view);
+          if (view)
+            label.textContent = view.classList.contains("life-teaser")
+              ? english
+                ? "open"
+                : "abrir"
+              : english
+                ? "view"
+                : "ver";
+        });
+        listeners.push(() =>
+          document.documentElement.classList.remove("has-cursor"),
+        );
       }
 
       return () => listeners.forEach((remove) => remove());

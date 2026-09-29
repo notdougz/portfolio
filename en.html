@@ -9,6 +9,18 @@
         navigation: auto;
       }
     </style>
+    <script>
+      try {
+        var root = document.documentElement;
+        if (sessionStorage.getItem("lang-curtain"))
+          root.classList.add("curtain-in", "curtain-lang");
+        else if (
+          !sessionStorage.getItem("intro-seen") &&
+          !matchMedia("(prefers-reduced-motion: reduce)").matches
+        )
+          root.classList.add("curtain-in", "curtain-intro");
+      } catch (error) {}
+    </script>
     <title>Douglas Oliveira — Full-Stack &amp; Artificial Intelligence</title>
     <meta
       name="description"
@@ -58,6 +70,24 @@
     />
   </head>
   <body>
+    <div class="curtain" aria-hidden="true">
+      <div class="curtain-blue"></div>
+      <div class="curtain-panel">
+        <p class="curtain-note handwritten" data-curtain-lang>
+          switching to English
+        </p>
+        <p class="curtain-note handwritten" data-curtain-intro>hi, I'm Doug!</p>
+        <p class="curtain-code"><span>E</span><span>N</span></p>
+        <p class="curtain-logo">
+          <span>D</span><span>O</span><span class="dot">.</span>
+        </p>
+        <span class="curtain-bar"><i></i></span>
+        <p class="curtain-status" data-curtain-intro>loading the portfolio</p>
+      </div>
+    </div>
+    <div class="cursor" aria-hidden="true">
+      <span class="cursor-ring"><span class="cursor-label"></span></span>
+    </div>
     <a class="skip-link" href="#conteudo">Skip to content</a>
     <header class="site-header">
       <a class="logo" href="#inicio" aria-label="Douglas Oliveira, home"

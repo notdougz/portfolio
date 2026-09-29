@@ -1,5 +1,6 @@
 import "./projects.js";
 import "./life.js";
+import { openCurtain } from "./curtain.js";
 import { t } from "./i18n.js";
 import { scrollToPosition } from "./scroll.js";
 
@@ -230,12 +231,6 @@ for (const image of document.querySelectorAll(".project-image img")) {
   image.addEventListener("error", reveal, { once: true });
 }
 document.querySelector("#year").textContent = new Date().getFullYear();
-document
-  .querySelector(".language-switch")
-  .addEventListener("click", (event) => {
-    const link = event.currentTarget;
-    link.hash = location.hash;
-  });
 
 // Smooth only deliberate anchor navigation, never layout corrections or wheel input.
 function anchorTop(target) {
@@ -291,8 +286,14 @@ const motionReady = import("./animations.js").catch(() => {
   /* All content remains usable if motion cannot load. */
 });
 // Pin spacing and font metrics must settle before restoring a section on PT/EN navigation.
+// The curtain never waits more than a moment, even if motion or fonts stall.
+setTimeout(openCurtain, 2500);
 Promise.all([motionReady, document.fonts?.ready]).then(() => {
   anchorIntent.abort();
+  restoreSection();
+  requestAnimationFrame(openCurtain);
+});
+function restoreSection() {
   if (
     userNavigated ||
     !initialHash ||
@@ -306,8 +307,6 @@ Promise.all([motionReady, document.fonts?.ready]).then(() => {
   } catch {
     return;
   }
-  requestAnimationFrame(() => {
-    const target = document.getElementById(id);
-    if (target) scrollToPosition(anchorTop(target), "instant");
-  });
-});
+  const target = document.getElementById(id);
+  if (target) scrollToPosition(anchorTop(target), "instant");
+}
