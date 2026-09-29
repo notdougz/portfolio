@@ -1,0 +1,32 @@
+const english = document.documentElement.lang === "en";
+const messages = {
+  "Copiar e-mail": "Copy email",
+  "Fechar galeria": "Close gallery",
+  "Ampliar ou reduzir imagem": "Zoom in or out",
+  "Imagem anterior": "Previous image",
+  "Próxima imagem": "Next image",
+  "Não foi possível carregar a imagem.": "The image could not be loaded.",
+  "Ver código no GitHub ↗": "View source on GitHub ↗",
+  "Abrir menu": "Open menu",
+  "Fechar menu": "Close menu",
+  "Ativar tema claro": "Switch to light theme",
+  "Ativar tema escuro": "Switch to dark theme",
+  "Sistema de agendamentos": "Barbershop scheduling system",
+  "First API — Gerenciador de tarefas": "First API — Task manager",
+  "Visão geral do dashboard": "Dashboard overview",
+  "Calendário de agendamentos": "Appointment calendar",
+  "Gestão de clientes": "Customer management",
+  "Gestão de serviços": "Service management",
+  "Painel financeiro": "Financial dashboard",
+  "Cadastro de clientes": "Customer registration",
+  "Notificação de previsão de chegada": "Arrival time notification",
+  "Interface no celular": "Mobile interface",
+  "Tela de login": "Login screen",
+  "Lista de tarefas do usuário": "User task list",
+  "Login e cadastro": "Login and registration",
+  "E-mail copiado ✓": "Email copied ✓",
+  "E-mail copiado para a área de transferência.": "Email copied to clipboard.",
+  "Selecione e copie: doug.dev@hotmail.com":
+    "Select and copy: doug.dev@hotmail.com",
+};
+export const t = (text) => (english ? messages[text] || text : text);

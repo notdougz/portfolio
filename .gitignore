@@ -1,0 +1,6 @@
+tmp/
+docs/REFINO-DESIGN-E-MOTION.md
+.DS_Store
+Thumbs.db
+node_modules/
+dist/
