@@ -247,20 +247,58 @@
             </p>
             <p class="about-description">
               My foundation combines Python, Node.js, React and TypeScript.
-              Beyond coding, <a href="#alem-do-codigo">Ultimate Frisbee</a> is
+              Beyond coding,
+              <a href="#alem-do-codigo" data-open-life>Ultimate Frisbee</a> is
               my biggest passion.
             </p>
             <div class="about-facts">
               <span>São Paulo, Brazil</span
               ><span>Systems Development · FAM · 2024</span>
             </div>
-            <a
-              class="text-link"
-              href="https://www.linkedin.com/in/douglas-oliveira-627088188/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Find me on LinkedIn <span aria-hidden="true">↗</span></a
-            >
+            <div class="about-actions">
+              <a
+                class="text-link"
+                href="https://www.linkedin.com/in/douglas-oliveira-627088188/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Find me on LinkedIn <span aria-hidden="true">↗</span></a
+              >
+              <button
+                class="life-teaser"
+                type="button"
+                aria-haspopup="dialog"
+                aria-controls="alem-do-codigo"
+              >
+                <span class="life-teaser-note handwritten"
+                  >Get to know me<br />beyond the code</span
+                >
+                <svg
+                  class="life-teaser-arrow"
+                  viewBox="0 0 96 56"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    class="arrow-line"
+                    d="M4 12c20-10 46-8 62 6s18 24 20 30"
+                  />
+                  <path class="arrow-head" d="M74 40l12 9 5-14" />
+                </svg>
+                <span class="life-teaser-photo"
+                  ><img
+                    src="assets/Pindorama.jpg"
+                    width="960"
+                    height="1280"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  /><span>BR champion</span></span
+                >
+                <span class="sr-only"
+                  >— Ultimate Frisbee, Brazilian champion</span
+                >
+              </button>
+            </div>
           </div>
         </section>
       </div>
@@ -1321,59 +1359,6 @@
         </div>
       </section>
       <section
-        class="section life-section"
-        id="alem-do-codigo"
-        aria-labelledby="life-title"
-      >
-        <figure class="life-photo">
-          <img
-            src="assets/Pindorama.jpg"
-            width="960"
-            height="1280"
-            alt="Douglas on the field with a medal and trophy from the Pindorama Ultimate Frisbee tournament"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>Ultimate Frisbee · Pindorama</figcaption>
-        </figure>
-        <div class="life-copy">
-          <p class="handwritten">Beyond the code</p>
-          <h2 id="life-title">
-            Ultimate Frisbee.<br /><span class="muted"
-              >My passion on the field.</span
-            >
-          </h2>
-          <p class="life-achievement">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.65"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path
-                d="M8 3h8v6a4 4 0 0 1-8 0ZM8 5H4v3c0 3 2 4 5 4m7-7h4v3c0 3-2 4-5 4M12 13v6m-4 2h8m-9 0v-2h10v2"
-              ></path></svg
-            ><span>Brazilian Ultimate Frisbee champion</span>
-          </p>
-          <p>
-            Ultimate Frisbee is my biggest passion outside technology. It is a
-            team sport played with a flying disc, where players officiate their
-            own games through dialogue, honesty and respect. This commitment to
-            the spirit of the game is one of the things I love most about it.
-          </p>
-          <p>
-            I've been a Brazilian Ultimate Frisbee champion. That achievement
-            means much more than a trophy: it reflects training, discipline,
-            strategy and trust built with my team. On the field, I learned to
-            communicate clearly, listen to different perspectives and take
-            responsibility for my decisions — values I also bring to my work.
-          </p>
-        </div>
-      </section>
-      <section
         class="contact-section"
         id="contato"
         aria-labelledby="contact-title"
@@ -1475,6 +1460,75 @@
         </div>
       </section>
     </main>
+    <dialog
+      class="life-drawer"
+      id="alem-do-codigo"
+      aria-labelledby="life-title"
+    >
+      <div class="life-drawer-panel">
+        <button class="life-drawer-close" type="button">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M19 12H5m6-6-6 6 6 6" /></svg
+          ><span>Back</span>
+        </button>
+
+        <figure class="life-photo">
+          <img
+            src="assets/Pindorama.jpg"
+            width="960"
+            height="1280"
+            alt="Douglas on the field with a medal and trophy from the Pindorama Ultimate Frisbee tournament"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Ultimate Frisbee · Pindorama</figcaption>
+        </figure>
+        <div class="life-copy">
+          <p class="handwritten">Beyond the code</p>
+          <h2 id="life-title">
+            Ultimate Frisbee.<br /><span class="muted"
+              >My passion on the field.</span
+            >
+          </h2>
+          <p class="life-achievement">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.65"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M8 3h8v6a4 4 0 0 1-8 0ZM8 5H4v3c0 3 2 4 5 4m7-7h4v3c0 3-2 4-5 4M12 13v6m-4 2h8m-9 0v-2h10v2"
+              ></path></svg
+            ><span>Brazilian Ultimate Frisbee champion</span>
+          </p>
+          <p>
+            Ultimate Frisbee is my biggest passion outside technology. It is a
+            team sport played with a flying disc, where players officiate their
+            own games through dialogue, honesty and respect. This commitment to
+            the spirit of the game is one of the things I love most about it.
+          </p>
+          <p>
+            I've been a Brazilian Ultimate Frisbee champion. That achievement
+            means much more than a trophy: it reflects training, discipline,
+            strategy and trust built with my team. On the field, I learned to
+            communicate clearly, listen to different perspectives and take
+            responsibility for my decisions — values I also bring to my work.
+          </p>
+        </div>
+      </div>
+    </dialog>
     <footer class="site-footer">
       <a href="#inicio" class="logo" aria-label="Back to home"
         >DO<span>.</span></a

@@ -247,19 +247,57 @@
             </p>
             <p class="about-description">
               Minha base combina Python, Node.js, React e TypeScript. Fora do
-              código, o <a href="#alem-do-codigo">Ultimate Frisbee</a> é minha
-              grande paixão.
+              código, o
+              <a href="#alem-do-codigo" data-open-life>Ultimate Frisbee</a> é
+              minha grande paixão.
             </p>
             <div class="about-facts">
               <span>São Paulo, Brasil</span><span>ADS · FAM · 2024</span>
             </div>
-            <a
-              class="text-link"
-              href="https://www.linkedin.com/in/douglas-oliveira-627088188/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Conheça meu LinkedIn <span aria-hidden="true">↗</span></a
-            >
+            <div class="about-actions">
+              <a
+                class="text-link"
+                href="https://www.linkedin.com/in/douglas-oliveira-627088188/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Conheça meu LinkedIn <span aria-hidden="true">↗</span></a
+              >
+              <button
+                class="life-teaser"
+                type="button"
+                aria-haspopup="dialog"
+                aria-controls="alem-do-codigo"
+              >
+                <span class="life-teaser-note handwritten"
+                  >Me conheça<br />fora do código</span
+                >
+                <svg
+                  class="life-teaser-arrow"
+                  viewBox="0 0 96 56"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    class="arrow-line"
+                    d="M4 12c20-10 46-8 62 6s18 24 20 30"
+                  />
+                  <path class="arrow-head" d="M74 40l12 9 5-14" />
+                </svg>
+                <span class="life-teaser-photo"
+                  ><img
+                    src="assets/Pindorama.jpg"
+                    width="960"
+                    height="1280"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  /><span>Campeão BR</span></span
+                >
+                <span class="sr-only"
+                  >— Ultimate Frisbee, campeão brasileiro</span
+                >
+              </button>
+            </div>
           </div>
         </section>
       </div>
@@ -1326,61 +1364,6 @@
         </div>
       </section>
       <section
-        class="section life-section"
-        id="alem-do-codigo"
-        aria-labelledby="life-title"
-      >
-        <figure class="life-photo">
-          <img
-            src="assets/Pindorama.jpg"
-            width="960"
-            height="1280"
-            alt="Douglas em campo, com medalha e troféu do torneio Pindorama de Ultimate Frisbee"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>Ultimate Frisbee · Pindorama</figcaption>
-        </figure>
-        <div class="life-copy">
-          <p class="handwritten">Além do código</p>
-          <h2 id="life-title">
-            Ultimate Frisbee.<br /><span class="muted"
-              >Minha paixão em campo.</span
-            >
-          </h2>
-          <p class="life-achievement">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.65"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path
-                d="M8 3h8v6a4 4 0 0 1-8 0ZM8 5H4v3c0 3 2 4 5 4m7-7h4v3c0 3-2 4-5 4M12 13v6m-4 2h8m-9 0v-2h10v2"
-              ></path></svg
-            ><span>Campeão brasileiro de Ultimate Frisbee</span>
-          </p>
-          <p>
-            O Ultimate Frisbee é minha grande paixão fora da tecnologia. É um
-            esporte coletivo com disco e autoarbitrado: os próprios jogadores
-            resolvem as situações de jogo com diálogo, honestidade e respeito.
-            Esse compromisso com o espírito do jogo é uma das coisas que mais me
-            conectam ao esporte.
-          </p>
-          <p>
-            Já fui campeão brasileiro de Ultimate Frisbee. A conquista
-            representa muito mais do que um troféu: carrega treinos, disciplina,
-            estratégia e a confiança construída com o time. Em campo, aprendi a
-            me comunicar com clareza, ouvir outras perspectivas e assumir
-            responsabilidade pelas minhas decisões — valores que também levo
-            para o trabalho.
-          </p>
-        </div>
-      </section>
-      <section
         class="contact-section"
         id="contato"
         aria-labelledby="contact-title"
@@ -1482,6 +1465,77 @@
         </div>
       </section>
     </main>
+    <dialog
+      class="life-drawer"
+      id="alem-do-codigo"
+      aria-labelledby="life-title"
+    >
+      <div class="life-drawer-panel">
+        <button class="life-drawer-close" type="button">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M19 12H5m6-6-6 6 6 6" /></svg
+          ><span>Voltar</span>
+        </button>
+
+        <figure class="life-photo">
+          <img
+            src="assets/Pindorama.jpg"
+            width="960"
+            height="1280"
+            alt="Douglas em campo, com medalha e troféu do torneio Pindorama de Ultimate Frisbee"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Ultimate Frisbee · Pindorama</figcaption>
+        </figure>
+        <div class="life-copy">
+          <p class="handwritten">Além do código</p>
+          <h2 id="life-title">
+            Ultimate Frisbee.<br /><span class="muted"
+              >Minha paixão em campo.</span
+            >
+          </h2>
+          <p class="life-achievement">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.65"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path
+                d="M8 3h8v6a4 4 0 0 1-8 0ZM8 5H4v3c0 3 2 4 5 4m7-7h4v3c0 3-2 4-5 4M12 13v6m-4 2h8m-9 0v-2h10v2"
+              ></path></svg
+            ><span>Campeão brasileiro de Ultimate Frisbee</span>
+          </p>
+          <p>
+            O Ultimate Frisbee é minha grande paixão fora da tecnologia. É um
+            esporte coletivo com disco e autoarbitrado: os próprios jogadores
+            resolvem as situações de jogo com diálogo, honestidade e respeito.
+            Esse compromisso com o espírito do jogo é uma das coisas que mais me
+            conectam ao esporte.
+          </p>
+          <p>
+            Já fui campeão brasileiro de Ultimate Frisbee. A conquista
+            representa muito mais do que um troféu: carrega treinos, disciplina,
+            estratégia e a confiança construída com o time. Em campo, aprendi a
+            me comunicar com clareza, ouvir outras perspectivas e assumir
+            responsabilidade pelas minhas decisões — valores que também levo
+            para o trabalho.
+          </p>
+        </div>
+      </div>
+    </dialog>
     <footer class="site-footer">
       <a href="#inicio" class="logo" aria-label="Voltar ao início"
         >DO<span>.</span></a

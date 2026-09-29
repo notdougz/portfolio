@@ -120,7 +120,7 @@ function initializeMotion() {
       );
     }
     for (const title of document.querySelectorAll(
-      ".experience-section h2, .projects-section h2, .tech-section h2, .ai-section h2, .life-section h2, .education-section h2",
+      ".experience-section h2, .projects-section h2, .tech-section h2, .ai-section h2, .education-section h2",
     )) {
       SplitText.create(title, {
         type: "lines",
@@ -229,18 +229,44 @@ function initializeMotion() {
       });
     }
 
-    gsap.fromTo(
-      ".life-photo img",
-      { clipPath: "inset(12% 10% 12% 10% round 8px)", scale: 1.14 },
-      {
-        clipPath: "inset(0% 0% 0% 0% round 8px)",
-        scale: 1,
-        duration: 1.5,
-        ease: "expo.out",
-        scrollTrigger: { trigger: ".life-photo", start: "top 82%", once: true },
-        clearProps: "clipPath,transform",
-      },
-    );
+    // The arrow to the "beyond the code" drawer draws itself once.
+    const arrow = document.querySelector(".life-teaser-arrow");
+    if (arrow) {
+      const paths = arrow.querySelectorAll("path");
+      for (const path of paths) {
+        const length = path.getTotalLength();
+        gsap.fromTo(
+          path,
+          { strokeDasharray: length, strokeDashoffset: length },
+          {
+            strokeDashoffset: 0,
+            duration: path.classList.contains("arrow-head") ? 0.35 : 0.9,
+            delay: path.classList.contains("arrow-head") ? 0.85 : 0.1,
+            ease: "power2.inOut",
+            scrollTrigger: {
+              trigger: ".life-teaser",
+              start: "top 92%",
+              once: true,
+            },
+            clearProps: "strokeDasharray,strokeDashoffset",
+          },
+        );
+      }
+      gsap.from(".life-teaser-photo", {
+        rotate: 14,
+        scale: 0.7,
+        opacity: 0,
+        duration: 0.9,
+        delay: 0.7,
+        ease: "back.out(1.6)",
+        scrollTrigger: {
+          trigger: ".life-teaser",
+          start: "top 92%",
+          once: true,
+        },
+        clearProps: "all",
+      });
+    }
 
     gsap.to(".scroll-progress span", {
       scaleX: 1,
@@ -378,7 +404,7 @@ function initializeMotion() {
         smoothWheel: true,
         syncTouch: false,
         autoToggle: true,
-        prevent: (node) => Boolean(node.closest(".pswp")),
+        prevent: (node) => Boolean(node.closest(".pswp, .life-drawer")),
       });
       setSmoothScroll(lenis);
       lenis.on("scroll", ScrollTrigger.update);

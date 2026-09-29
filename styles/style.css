@@ -3428,3 +3428,259 @@ dialog::backdrop {
   ) {
   filter: none;
 }
+
+/* "Beyond the code": teaser beside the about links and a drawer from the right. */
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px clamp(28px, 4vw, 56px);
+  margin-top: 8px;
+}
+.life-teaser {
+  display: grid;
+  grid-template-columns: auto 78px auto;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+  text-align: left;
+  color: var(--blue);
+}
+.life-teaser-note {
+  font-size: 27px;
+  line-height: 0.95;
+  transform: rotate(-4deg);
+  transition: transform 0.4s var(--ease-ui);
+}
+.life-teaser-arrow {
+  width: 78px;
+  height: 46px;
+  margin-top: 18px;
+  stroke: var(--blue);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.4s var(--ease-ui);
+}
+.about-copy .life-teaser .life-teaser-photo {
+  position: relative;
+  display: block;
+  width: 84px;
+  height: auto;
+  flex: none;
+  padding: 5px 5px 20px;
+  background: #f4f1ea;
+  border-radius: 3px;
+  box-shadow:
+    0 14px 30px -12px #000a,
+    0 0 0 1px #0000000f;
+  transform: rotate(6deg);
+  transition:
+    transform 0.45s var(--ease-ui),
+    box-shadow 0.45s var(--ease-ui);
+}
+.life-teaser-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: 50% 30%;
+  border-radius: 1px;
+}
+.life-teaser-photo span {
+  position: absolute;
+  inset: auto 0 3px;
+  text-align: center;
+  font:
+    600 11px/1 "Caveat",
+    cursive;
+  font-size: 14px;
+  color: #1c2b40;
+}
+.life-teaser:hover .life-teaser-note,
+.life-teaser:focus-visible .life-teaser-note {
+  transform: rotate(-2deg) translateY(-2px);
+}
+.life-teaser:hover .life-teaser-arrow,
+.life-teaser:focus-visible .life-teaser-arrow {
+  transform: translateX(5px);
+}
+.life-teaser:hover .life-teaser-photo,
+.life-teaser:focus-visible .life-teaser-photo {
+  transform: rotate(0deg) scale(1.08);
+  box-shadow:
+    0 20px 40px -14px color-mix(in srgb, var(--blue) 60%, #000),
+    0 0 0 1px #0000000f;
+}
+.life-teaser:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
+html.drawer-open {
+  overflow: hidden;
+}
+/* Full cover over the about section: wipes in from the left like a curtain. */
+dialog.life-drawer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  overflow: hidden;
+}
+dialog.life-drawer::backdrop {
+  background: transparent;
+  backdrop-filter: none;
+}
+dialog.life-drawer::before {
+  /* A blue curtain sweeps across first; the section follows right behind it. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--blue) 55%, #06101c),
+    var(--blue)
+  );
+  pointer-events: none;
+  clip-path: inset(0 0 0 100%);
+}
+dialog.life-drawer[open]::before {
+  animation: cover-curtain 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+dialog.life-drawer.is-closing::before {
+  animation: none;
+}
+dialog.life-drawer[open] .life-drawer-panel {
+  animation: cover-in 0.72s cubic-bezier(0.65, 0, 0.35, 1) 0.14s both;
+}
+dialog.life-drawer.is-closing .life-drawer-panel {
+  animation: cover-out 0.6s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+.life-drawer-panel {
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: grid;
+  grid-template-columns: minmax(0, 39%) minmax(0, 51%);
+  gap: 10%;
+  align-items: center;
+  align-content: center;
+  padding: 96px var(--gutter) 56px;
+}
+.life-drawer-close {
+  position: absolute;
+  top: 22px;
+  left: clamp(24px, 3.2vw, 64px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 18px 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 15px;
+  font-weight: 600;
+  transition:
+    border-color 0.25s var(--ease-ui),
+    color 0.25s var(--ease-ui);
+}
+.life-drawer-close svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s var(--ease-ui);
+}
+.life-drawer-close:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.life-drawer-close:hover svg {
+  transform: translateX(-4px);
+}
+.life-drawer .life-photo {
+  margin: 0;
+}
+.life-drawer .life-photo img {
+  width: 100%;
+  max-height: calc(100dvh - 210px);
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.life-drawer .life-copy h2 {
+  font-size: clamp(38px, 4vw, 60px);
+}
+.life-drawer[open] .life-drawer-panel > * {
+  animation: cover-item 0.9s var(--ease-ui) both;
+  animation-delay: 0.62s;
+}
+.life-drawer[open] .life-drawer-panel > .life-copy {
+  animation-delay: 0.74s;
+}
+@keyframes cover-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes cover-out {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+  to {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+@keyframes cover-curtain {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  50% {
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+@keyframes cover-item {
+  from {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+}
+@media (max-width: 999px) {
+  .life-drawer-panel {
+    display: block;
+    padding: 88px 22px 48px;
+  }
+  .life-drawer .life-photo {
+    margin-bottom: 30px;
+  }
+  .life-drawer .life-photo img {
+    max-height: 48vh;
+  }
+  .life-drawer-close {
+    top: 18px;
+    left: 18px;
+  }
+}
+@media (max-width: 999px) {
+  .life-teaser-note {
+    font-size: 24px;
+  }
+}

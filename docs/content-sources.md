@@ -33,7 +33,7 @@ O DOCX fornecido controla a apresentação do currículo: Cambria, títulos em n
 - Referência visual: https://devmachado.com.br/ (composição, hierarquia, avatar e página contínua). Nenhum código ou avatar da referência foi copiado.
 - Avatar: ferramenta nativa ImageGen, com as três fotos fornecidas como referências de identidade. Versão de entrega otimizada em `assets/avatar-douglas.webp`; prévia de links em `assets/og-image.jpg` e `assets/og-image-en.jpg`.
 - Prompt final: transformar o retrato em avatar cartoon 3D, mantendo cabelo curto cacheado, sobrancelhas, formato do rosto e barba; camiseta preta, iluminação azul sutil, expressão amigável, enquadramento até a cintura e fundo transparente. A segunda geração foi usada como final.
-- Foto da seção Além do código: `assets/Pindorama.jpg`, fornecida por Douglas. O relato sobre Ultimate Frisbee foi recuperado do portfólio anterior e ampliado com o título de campeão brasileiro confirmado diretamente por Douglas, sem acrescentar ano ou contagem de títulos. A cópia otimizada de `eu.jpg` permanece disponível em `assets/douglas-photo.webp`.
+- Foto da seção Além do código (aberta pela nota “Me conheça fora do código” no Sobre mim, como uma cortina que entra da esquerda): `assets/Pindorama.jpg`, fornecida por Douglas. O relato sobre Ultimate Frisbee foi recuperado do portfólio anterior e ampliado com o título de campeão brasileiro confirmado diretamente por Douglas, sem acrescentar ano ou contagem de títulos.
 - Screenshots dos projetos: arquivos do repositório original.
 
 ## Validação

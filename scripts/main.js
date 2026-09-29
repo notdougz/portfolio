@@ -1,4 +1,5 @@
 import "./projects.js";
+import "./life.js";
 import { t } from "./i18n.js";
 import { scrollToPosition } from "./scroll.js";
 
