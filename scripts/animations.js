@@ -597,14 +597,20 @@ function initializeMotion() {
   );
 
   media.add(
-    "(min-width: 1000px) and (min-height: 820px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+    "(min-width: 1000px) and (min-height: 560px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
     () => {
       if (!viewport || !projects || !projectPin) return;
       // CSS sticky owns the pin. No spacer insertion or scroll-position correction.
       const measure = () => {
-        const offset = Math.min(
-          (document.querySelector(".site-header")?.offsetHeight || 76) + 16,
-          innerHeight - projectPin.offsetHeight - 20,
+        // Centred in the space under the header when there is room to spare.
+        const headerSpace =
+          (document.querySelector(".site-header")?.offsetHeight || 76) + 16;
+        const offset = Math.max(
+          headerSpace,
+          Math.min(
+            (innerHeight + headerSpace - projectPin.offsetHeight) / 2,
+            innerHeight - projectPin.offsetHeight - 20,
+          ),
         );
         projects.style.setProperty("--project-offset", `${offset}px`);
         projects.style.setProperty(
