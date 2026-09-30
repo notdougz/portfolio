@@ -12,6 +12,13 @@
     <script>
       try {
         var root = document.documentElement;
+        // Apply the saved theme before the first paint (no dark flash on PT/EN switch).
+        if (localStorage.getItem("douglas-theme") === "light") {
+          root.dataset.theme = "light";
+          document
+            .querySelector('meta[name="theme-color"]')
+            .setAttribute("content", "#f4f6fa");
+        }
         if (sessionStorage.getItem("lang-curtain"))
           root.classList.add("curtain-in", "curtain-lang");
         else if (
