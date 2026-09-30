@@ -4015,3 +4015,32 @@ html.has-cursor .cursor {
     margin-top: 10px;
   }
 }
+
+/* No horizontal page scroll, whatever an animation or a browser quirk does.
+   `clip` (unlike `hidden`) creates no scroll container, so sticky pins still work. */
+html,
+body {
+  overflow-x: clip;
+}
+/* Hyphenated words ("full-stack", "back-end") never split across lines. */
+.role-title span {
+  white-space: nowrap;
+}
+/* Phones and tablets: the portrait area hugs the image (no empty band above the
+   head) and the about section hands over to the career section sooner. */
+@media (max-width: 999px) {
+  .avatar-track .avatar-stage {
+    height: auto;
+    min-height: 0;
+  }
+  .avatar-stage .hero-portrait {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin-inline: auto;
+    transform: none;
+  }
+  .intro-journey > .about-section {
+    padding-bottom: 24px;
+  }
+}

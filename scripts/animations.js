@@ -257,15 +257,27 @@ function initializeMotion() {
     gsap.set(blocks, { autoAlpha: 0, y: 64 });
     ScrollTrigger.batch(blocks, {
       start: "top 92%",
-      onEnter: (batch) =>
-        gsap.to(batch, {
+      onEnter: (batch) => {
+        // A jump (menu link, "back to top") fires every block it skipped at once:
+        // those already off screen appear immediately so the stagger only
+        // queues what the reader can actually see.
+        const onScreen = batch.filter((block) => {
+          const box = block.getBoundingClientRect();
+          return box.top < innerHeight && box.bottom > 0;
+        });
+        gsap.set(
+          batch.filter((block) => !onScreen.includes(block)),
+          { autoAlpha: 1, y: 0, overwrite: true },
+        );
+        gsap.to(onScreen, {
           autoAlpha: 1,
           y: 0,
           duration: 0.95,
           stagger: 0.1,
           ease: "back.out(1.5)",
           overwrite: true,
-        }),
+        });
+      },
       onLeaveBack: (batch) =>
         gsap.to(batch, {
           autoAlpha: 0,
@@ -690,11 +702,28 @@ previousExperience?.addEventListener("toggle", refresh);
 
 window.addEventListener("load", refresh, { once: true });
 
+// Lazy images and late layout shifts change the page height after start-up;
+// re-measure so entrances below them still fire where the reader actually is.
+let measuredHeight = document.body.offsetHeight;
+let heightTimer;
+const heightWatcher = new ResizeObserver(() => {
+  clearTimeout(heightTimer);
+  heightTimer = setTimeout(() => {
+    const height = document.body.offsetHeight;
+    if (Math.abs(height - measuredHeight) < 2) return;
+    measuredHeight = height;
+    refresh();
+    measuredHeight = document.body.offsetHeight;
+  }, 120);
+});
+heightWatcher.observe(document.body);
+
 if (import.meta.hot)
   import.meta.hot.dispose(() => {
     disposed = true;
 
     previousExperience?.removeEventListener("toggle", refresh);
     window.removeEventListener("load", refresh);
+    heightWatcher.disconnect();
     media.revert();
   });
