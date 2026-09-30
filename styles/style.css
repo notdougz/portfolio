@@ -3941,3 +3941,14 @@ html.has-cursor .cursor {
 .cursor.is-view .cursor-label {
   opacity: 1;
 }
+
+/* Short, wide windows: the portrait is also sized by height so the head never slips under the header. */
+@media (min-width: 1000px) {
+  .hero-portrait {
+    width: min(clamp(340px, 33vw, 490px), calc((100svh - 112px) / 1.5));
+  }
+}
+:root[data-theme="light"] .curtain-blue,
+:root[data-theme="light"] dialog.life-drawer::before {
+  background: linear-gradient(90deg, var(--blue), #9fd0ff);
+}
