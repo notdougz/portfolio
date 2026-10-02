@@ -3,7 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
-import { scrollToPosition, setSmoothScroll } from "./scroll.js";
+import { anchorTop, scrollToPosition, setSmoothScroll } from "./scroll.js";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 ScrollTrigger.config({ ignoreMobileResize: true });
@@ -542,7 +542,48 @@ function initializeMotion() {
       const tick = (time) => lenis.raf(time * 1000);
       gsap.ticker.add(tick);
       gsap.ticker.lagSmoothing(0);
+
+      // Gentle snap: when the reader stops close to the start of a section,
+      // the page settles with its title just under the header. Stopping
+      // anywhere else (mid timeline, mid project) leaves the page alone.
+      // Decided only once the smooth scroll has really come to rest.
+      const SNAP_RANGE = 140;
+      let readerScrolled = false;
+      let settleTimer;
+      // Measured at decision time: pins and late layout shifts move them.
+      const snapPoints = () => [
+        0,
+        ...[...document.querySelectorAll("main section[id]")]
+          .filter((section) => section.id !== "inicio")
+          .map((section) =>
+            Math.min(Math.round(anchorTop(section)), lenis.limit),
+          ),
+      ];
+      const settle = () => {
+        if (!readerScrolled || lenis.isStopped) return;
+        readerScrolled = false;
+        const y = lenis.scroll;
+        const nearest = snapPoints().reduce(
+          (best, point) =>
+            Math.abs(point - y) < Math.abs(best - y) ? point : best,
+          Infinity,
+        );
+        const distance = Math.abs(nearest - y);
+        if (distance > 2 && distance <= SNAP_RANGE)
+          lenis.scrollTo(nearest, {
+            duration: 0.85,
+            easing: (t) => 1 - Math.pow(1 - t, 4),
+          });
+      };
+      lenis.on("virtual-scroll", () => {
+        readerScrolled = true;
+      });
+      lenis.on("scroll", () => {
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(settle, 160);
+      });
       return () => {
+        clearTimeout(settleTimer);
         gsap.ticker.remove(tick);
         lenis.destroy();
         setSmoothScroll(null);
