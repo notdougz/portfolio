@@ -2,7 +2,7 @@ import "./projects.js";
 import "./life.js";
 import { openCurtain } from "./curtain.js";
 import { t } from "./i18n.js";
-import { scrollToPosition } from "./scroll.js";
+import { anchorTop, scrollToPosition } from "./scroll.js";
 
 const root = document.documentElement;
 const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
@@ -233,22 +233,6 @@ for (const image of document.querySelectorAll(".project-image img")) {
 document.querySelector("#year").textContent = new Date().getFullYear();
 
 // Smooth only deliberate anchor navigation, never layout corrections or wheel input.
-function anchorTop(target) {
-  if (target.querySelector(".project-pin"))
-    return Math.max(
-      0,
-      target.getBoundingClientRect().top +
-        scrollY +
-        parseFloat(getComputedStyle(target).paddingTop) -
-        header.offsetHeight -
-        20,
-    );
-  const content = target.querySelector(".section-kicker, h2") || target;
-  return Math.max(
-    0,
-    content.getBoundingClientRect().top + scrollY - header.offsetHeight - 20,
-  );
-}
 document.addEventListener("click", (event) => {
   const link = event.target.closest('a[href^="#"]');
   if (
